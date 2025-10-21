@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Àṣàkẹ́ Àdúràgbèmí 💞</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================================
+           For Àṣàkẹ́ Àdúràgbèmí — Enhanced Deep Red & Gold Theme
+           By Oyebola ❤️
+           ========================================================= */
+
+        /* ---------- Variables / palette ---------- */
+        :root{
+            --deep-red: #5a0f0f;
+            --red-acc:  #8b0f0f;
+            --gold:     #d9b34a;
+            --gold-light: #f0d78c;
+            --cream:    #fff6f0;
+            --glass:    rgba(255,255,255,0.04);
+            --card-glow: rgba(217,179,74,0.08);
+            --shadow:   rgba(0,0,0,0.45);
+            --font-serif: "Playfair Display", serif;
+            --font-cursive: "Great Vibes", cursive;
+        }
+
+        /* ---------- Base page styling ---------- */
+        *{box-sizing:border-box; margin:0; padding:0;}
+        body{
+            background: linear-gradient(160deg, var(--deep-red), var(--red-acc));
+            font-family: var(--font-serif);
+            color: var(--cream);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Background pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(217, 179, 74, 0.1) 2px, transparent 0),
+                radial-gradient(circle at 75% 75%, rgba(217, 179, 74, 0.1) 2px, transparent 0);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            z-index: -1;
+        }
+
+        /* ---------- Container & section ---------- */
+        .container{
+            text-align:center;
+            padding:60px 20px;
+            max-width:900px;
+            margin:auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        section{
+            margin-bottom:100px;
+            opacity:0;
+            transform:translateY(30px);
+            transition:opacity 1s ease, transform 1s ease;
+        }
+
+        section.visible{
+            opacity:1;
+            transform:translateY(0);
+        }
+
+        /* ---------- Titles ---------- */
+        h1{
+            font-family: var(--font-cursive);
+            font-size:3.5em;
+            color: var(--gold);
+            text-shadow:0 0 10px rgba(217,179,74,0.5);
+            margin-bottom:0.2em;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .intro {
+            font-size: 1.3em;
+            margin: 20px 0 40px;
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        h2{
+            font-family: var(--font-cursive);
+            color: var(--gold);
+            font-size:2.5em;
+            margin:30px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* ---------- Poems ---------- */
+        .poem-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .poem{
+            font-size:1.2em;
+            line-height:1.8;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-left:4px solid var(--gold);
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 20px rgba(0,0,0,0.3);
+            text-align:left;
+            position: relative;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .poem:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .poem::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4em;
+            color: rgba(217,179,74,0.2);
+            font-family: var(--font-cursive);
+            line-height: 1;
+        }
+
+        /* ---------- Hidden message ---------- */
+        .hidden-message{
+            display:none;
+            margin-top:30px;
+            font-family: var(--font-cursive);
+            font-size:1.8em;
+            color: var(--gold);
+            animation:fadeIn 2s ease forwards;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(217,179,74,0.3);
+        }
+
+        @keyframes fadeIn{
+            from{opacity:0; transform: translateY(20px);}
+            to{opacity:1; transform: translateY(0);}
+        }
+
+        /* ---------- Reveal button ---------- */
+        .reveal-btn{
+            background:var(--gold);
+            color:var(--deep-red);
+            border:none;
+            font-size:1.1em;
+            padding:12px 30px;
+            border-radius:30px;
+            cursor:pointer;
+            font-family: var(--font-serif);
+            transition:all 0.3s ease;
+            margin-top:20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-btn:hover{
+            transform:scale(1.05);
+            background:#ffd870;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .reveal-btn:active {
+            transform: scale(0.98);
+        }
+
+        .reveal-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .reveal-btn:hover::after {
+            left: 100%;
+        }
+
+        /* ---------- Footer ---------- */
+        footer{
+            margin-top:60px;
+            font-family:var(--font-cursive);
+            font-size:1.5em;
+            color:var(--gold);
+            padding: 20px;
+            border-top: 1px solid rgba(217,179,74,0.3);
+        }
+
+        /* ---------- Floating hearts ---------- */
+        .heart{
+            position:fixed;
+            bottom:-10px;
+            color:rgba(255,255,255,0.3);
+            animation:floatUp 8s linear infinite;
+            font-size:18px;
+            z-index:0;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp{
+            0%{transform:translateY(0) rotate(0deg); opacity: 0.7;}
+            100%{transform:translateY(-110vh) rotate(360deg); opacity: 0;}
+        }
+
+        /* ---------- Music iframe ---------- */
+        iframe{
+            display:none;
+        }
+
+        /* ---------- Decorative elements ---------- */
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(217,179,74,0.2);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        .decoration-2 {
+            bottom: 20%;
+            right: 8%;
+            animation: pulse 10s infinite ease-in-out reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* ---------- Responsive design ---------- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 2em; }
+            .poem { font-size: 1.1em; padding: 20px; }
+            .container { padding: 40px 15px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            .poem { font-size: 1em; padding: 15px; }
+            .intro { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Decorative elements -->
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+
+    <div class="container">
+        <h1>Àṣàkẹ́ Àdúràgbèmí 💞</h1>
+        <p class="intro">Every sunrise brings a new verse for you... my stolen heart, my answered prayer.</p>
+
+        <section id="poem-section">
+            <h2>Today's Poem</h2>
+            <div class="poem-container">
+                <div class="poem" id="poem"></div>
+            </div>
+        </section>
+
+        <button class="reveal-btn" onclick="revealMessage()">💛 Click to Reveal My Heart 💛</button>
+        <div id="hiddenMessage" class="hidden-message">
+            Àṣàkẹ́ Àdúràgbèmí, you are the calm after every storm, the joy after every silence.  
+            You are not my world — you are my reason for it. ❤️
+        </div>
+
+        <footer>Forever yours, <strong>Oyebola</strong> 💖</footer>
+    </div>
+
+    <!-- Floating hearts -->
+    <script>
+        function createHeart(){
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+            heart.style.fontSize = (15 + Math.random() * 15) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(()=>{heart.remove();},10000);
+        }
+        setInterval(createHeart,500);
+    </script>
+
+    <!-- Poems & reveal logic -->
+  <!-- POEMS ONLY - English & Yoruba Mix -->
+<script>
+const poems = [
+    `Asake, <span class="yoruba-word">Ọmọ tí a ṣà nínú àwọn ọmọ</span>, chosen among children,<br>
+    You came into my life like <span class="yoruba-word">ìmọlẹ̀</span> — sudden light.<br>
+    Before I knew it, you had stolen my <span class="yoruba-word">ọkàn</span>, my heart,<br>
+    And I don't want it back — <span class="yoruba-word">Mo fẹ́ ọ lọ́kàn gbogbo</span>, I love you completely.`,
+
+    `Your smile makes the <span class="yoruba-word">òṣùpá</span> — the moon — jealous,<br>
+    Your laughter is sweeter than <span class="yoruba-word">oyin</span> — honey.<br>
+    <span class="yoruba-word">Àṣàkẹ́</span>, my beautiful one,<br>
+    You are <span class="yoruba-word">ìdí</span> my reason and <span class="yoruba-word">ìrètí</span> my hope.`,
+
+    `When you walk, <span class="yoruba-word">ìlẹ̀</span> — the earth — kisses your feet,<br>
+    When you speak, <span class="yoruba-word">afẹfẹ</span> — the wind — stops to listen.<br>
+    You are <span class="yoruba-word">ore</span> my friend and <span class="yoruba-word">olólùfẹ́</span> my lover,<br>
+    <span class="yoruba-word">Mo fẹ́ rìn pẹ̀lú ẹ lọ́nà gbogbo</span>, I want to walk with you on every path.`,
+
+    `Before you, my nights were <span class="yoruba-word">okunkun</span> — darkness,<br>
+    My days were <span class="yoruba-word">aláìlòrùn</span> — without sunshine.<br>
+    Now you are my <span class="yoruba-word">ìmọ́lẹ̀</span> — light,<br>
+    My <span class="yoruba-word">àlàáfíà</span> — peace, my everything.`,
+
+    `<span class="yoruba-word">Àdúràgbèmí</span>, the answer to my prayers,<br>
+    You came when I whispered <span class="yoruba-word">àdúrà</span> to the stars.<br>
+    Now every morning, I wake up grateful,<br>
+    <span class="yoruba-word">Mo dúpẹ́ Ọlọ́run fún ìwọ</span>, I thank God for you.`,
+
+    `Your eyes hold <span class="yoruba-word">itàn</span> — stories I want to read forever,<br>
+    Your voice is <span class="yoruba-word">orin</span> — music that calms my soul.<br>
+    <span class="yoruba-word">Àṣàkẹ́</span>, my <span class="yoruba-word">ayábọ̀</span> — precious one,<br>
+    You make my heart sing <span class="yoruba-word">oríkì</span> — praises.`,
+
+    `I want to be your <span class="yoruba-word">alábo</span> — protector,<br>
+    Your <span class="yoruba-word">àṣíká</span> — shelter from every storm.<br>
+    To hold you when you're <span class="yoruba-word">àìsàn</span> — unwell,<br>
+    And dance with you in <span class="yoruba-word">ojú-ọjọ́</span> — good times.`,
+
+    `You are the <span class="yoruba-word">ọrẹ</span> my friend I prayed for,<br>
+    The <span class="yoruba-word">olólùfẹ́</span> my lover I dreamed of.<br>
+    <span class="yoruba-word">Ìwọ ni ìgbéyàwó mi</span> — you are my wife,<br>
+    My <span class="yoruba-word">ìfẹ́</span> — love, my <span class="yoruba-word">ìrètí</span> — hope.`,
+
+    `When I look at you, I see <span class="yoruba-word">ọjọ́ iwájú</span> — tomorrow,<br>
+    <span class="yoruba-word">Aláwìí</span> — forever, and <span class="yoruba-word">ayé</span> — life itself.<br>
+    You are my <span class="yoruba-word">èrò</span> — thought in the morning,<br>
+    My <span class="yoruba-word">alá</span> — dream at night.`,
+
+    `<span class="yoruba-word">Mo fẹ́ kí a jẹ́ aláwàdà</span> — I want us to be happy,<br>
+    To grow old together like <span class="yoruba-word">ìwé</span> — fine wine.<br>
+    To build a home filled with <span class="yoruba-word">àlàáfíà</span> — peace,<br>
+    And love that never knows <span class="yoruba-word">òfo</span> — loss.`,
+
+    `Your touch is like <span class="yoruba-word">omi ìgbaní</span> — healing water,<br>
+    Your presence is my <span class="yoruba-word">ìtura</span> — comfort.<br>
+    <span class="yoruba-word">Àṣàkẹ́</span>, my <span class="yoruba-word">olórí</span> — crown,<br>
+    You make me feel like a <span class="yoruba-word">ọba</span> — king.`,
+
+    `I want to learn all your <span class="yoruba-word">àwọn ìfẹ́</span> — loves,<br>
+    Your <span class="yoruba-word">àwọn èrò</span> — thoughts, your <span class="yoruba-word">àwọn ìdí</span> — reasons.<br>
+    To be the one who knows your <span class="yoruba-word">inú</span> — heart,<br>
+    And holds your <span class="yoruba-word">ọwọ́</span> — hand through life.`,
+
+    `You are the <span class="yoruba-word">ọrẹ</span> my friend who understands,<br>
+    The <span class="yoruba-word">olólùfẹ́</span> my lover who completes.<br>
+    <span class="yoruba-word">Ìwọ ni àṣeyọrí mi</span> — you are my success,<br>
+    My <span class="yoruba-word">ìdunnu</span> — joy, my <span class="yoruba-word">ìgbàlẹ̀</span> — foundation.`,
+
+    `When we are together, time becomes <span class="yoruba-word">afẹ́fẹ́</span> — wind,<br>
+    Flowing gently without <span class="yoruba-word">ìdàwọ́lé</span> — interruption.<br>
+    Every moment feels like <span class="yoruba-word">ayò</span> — celebration,<br>
+    Every day like <span class="yoruba-word">ọjọ́ ìyẹnú</span> — surprise.`,
+
+    `I want to write our <span class="yoruba-word">itàn</span> — story together,<br>
+    Fill it with <span class="yoruba-word">ìfẹ́</span> — love and <span class="yoruba-word">ẹ̀rọ</span> — laughter.<br>
+    To create memories that become <span class="yoruba-word">òwe</span> — proverbs,<br>
+    For our <span class="yoruba-word">àwọn ọmọ</span> — children to tell.`,
+
+    `Your beauty is like <span class="yoruba-word">òdòdó</span> — flower that never fades,<br>
+    Your spirit like <span class="yoruba-word">omi</span> — water that always flows.<br>
+    <span class="yoruba-word">Àṣàkẹ́</span>, my <span class="yoruba-word">olólùfẹ́</span> — beloved,<br>
+    You are the <span class="yoruba-word">ọrẹ</span> — friend my soul needed.`,
+
+    `I want to be your <span class="yoruba-word">ìgbékẹlé</span> — support,<br>
+    Your <span class="yoruba-word">àṣíká</span> — shelter in every storm.<br>
+    To stand by you through <span class="yoruba-word">ìjà</span> — challenges,<br>
+    And celebrate every <span class="yoruba-word">àṣeyọrí</span> — victory.`,
+
+    `You make me want to be a better <span class="yoruba-word">ọkùnrin</span> — man,<br>
+    To build a <span class="yoruba-word">ilé</span> — home worthy of your love.<br>
+    To be the <span class="yoruba-word">alábo</span> — protector of your dreams,<br>
+    And the <span class="yoruba-word">olùṣọ́</span> — keeper of your heart.`,
+
+    `When I hear your name — <span class="yoruba-word">Àṣàkẹ́</span>,<br>
+    My heart does <span class="yoruba-word">ìyẹnú</span> — a happy dance.<br>
+    It whispers <span class="yoruba-word">"ọwọ́ mi"</span> — my own,<br>
+    And sings <span class="yoruba-word">"olólùfẹ́ mi"</span> — my beloved.`,
+
+    `You are the <span class="yoruba-word">ìdí</span> — reason I believe in <span class="yoruba-word">ifẹ́</span> — love,<br>
+    The <span class="yoruba-word">àpẹẹrẹ</span> — example of everything beautiful.<br>
+    <span class="yoruba-word">Mo fẹ́ rìn pẹ̀lú ẹ lọ́nà gbogbo</span>,<br>
+    I want to walk with you on every path, my love.`,
+
+    `Your love is my <span class="yoruba-word">àlàáfíà</span> — peace,<br>
+    My <span class="yoruba-word">ìtura</span> — comfort, my <span class="yoruba-word">ìdunnu</span> — joy.<br>
+    You are the <span class="yoruba-word">ọrẹ</span> — friend who understands,<br>
+    The <span class="yoruba-word">olólùfẹ́</span> — lover who completes me.`,
+
+    `I want to grow old with you,<br>
+    Watch our hair turn <span class="yoruba-word">funfun</span> — white.<br>
+    To look back at our <span class="yoruba-word">itàn</span> — story,<br>
+    And smile at every <span class="yoruba-word">àyè</span> — chapter.`,
+
+    `You are my <span class="yoruba-word">ìrètí</span> — hope for tomorrow,<br>
+    My <span class="yoruba-word">ìgbàlẹ̀</span> — foundation for today.<br>
+    <span class="yoruba-word">Àṣàkẹ́</span>, my <span class="yoruba-word">olólùfẹ́</span> — beloved,<br>
+    <span class="yoruba-word">Mo fẹ́ ọ lọ́kàn gbogbo</span> — I love you completely.`,
+
+    `In your eyes, I see my <span class="yoruba-word">ọjọ́ iwájú</span> — future,<br>
+    In your smile, I find my <span class="yoruba-word">ìdunnu</span> — happiness.<br>
+    In your heart, I've found my <span class="yoruba-word">ilé</span> — home,<br>
+    And in your love, my <span class="yoruba-word">ìdá</span> — purpose.`,
+
+    `<span class="yoruba-word">Àṣàkẹ́ Àdúràgbèmí</span>,<br>
+    You are the <span class="yoruba-word">ọrẹ</span> my friend, the <span class="yoruba-word">olólùfẹ́</span> my lover,<br>
+    The <span class="yoruba-word">ìdí</span> my reason, the <span class="yoruba-word">ìrètí</span> my hope.<br>
+    <span class="yoruba-word">Mo fẹ́ ọ lọ́kàn gbogbo, lailai</span> — I love you completely, forever,<br>
+    Your <span class="yoruba-word">Oyebola</span>.`
+];
+
+        // Show daily poem based on day of year
+        function showPoem(){
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+            const index = dayOfYear % poems.length;
+            document.getElementById('poem').innerHTML = poems[index];
+        }
+        showPoem();
+
+        // Reveal hidden message
+        function revealMessage(){
+            document.getElementById('hiddenMessage').style.display='block';
+            document.querySelector('.reveal-btn').style.display = 'none';
+        }
+
+        // Fade sections into view
+        const sections = document.querySelectorAll('section');
+        const revealOnScroll = () => {
+            const triggerBottom = window.innerHeight * 0.85;
+            sections.forEach(sec=>{
+                const boxTop = sec.getBoundingClientRect().top;
+                if(boxTop < triggerBottom){ sec.classList.add('visible'); }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+    </script>
+
+    <!-- Music (YouTube autoplay) -->
+    <iframe src="https://www.youtube.com/embed/iZ7KqF2bq8w?autoplay=1&loop=1&playlist=iZ7KqF2bq8w"
+            allow="autoplay"></iframe>
+
+</body>
+</html>
